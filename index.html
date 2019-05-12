@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Study</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  <link rel="stylesheet" href="style.css">
+  <style>
+      body {font-family:Georgia, "Times New Roman", Times, serif; }
+      h3  {text-align: center;border-bottom: 1px solid rgb(233, 232, 232);}
+  </style>
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+         <h1 style="font-size:48px;"><strong>Mission to Mars</strong></h1>
+         <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+  </div>
+  <div class="container">
+    <div class="row">
+    <div class="col-sm-12 col-md-12"> 
+      <h2><strong>   Latest Mars News </strong></h1>
+      <h4><strong> {{B.title}} </strong></h4>
+      <p> {{B.para}} </p>
+    </div>
+    </div>
+    <div class="row"> 
+      <section class="col-sm-12 col-md-8"> 
+        <h2><strong>  Featured Mars Image</strong></h1>
+        <img src={{ B.n_link }} alt="Mars" width=100%, height=75%> 
+      </section>
+      <aside class="col-sm-12 col-md-4" > 
+       <div class="card">
+         <div class="card-body"> 
+          <h5><strong> Current Weather on Mars </strong></h5>
+          <p> {{ B.mars_weather }}</p></div>
+       </div>
+       <div> 
+        <h5><strong> Mars Facts  </strong></h5>
+        <p> {{B.mars_fact|safe}}</p>
+       </div>
+      </aside>
+    </div>
+     <h3 ><strong>  Mars Hemispheres</strong></h3>
+      <div class="row"> 
+        {% for x in B.mars_hemi %}
+         <div class="col-sm-12 col-md-6" >
+           <div class="card"> 
+            <div class="card-body"> 
+             <img width=100% src="{{x.img_url}}"  alt={{x.title}}>
+             <h5><strong>{{x.title}}  </strong></h5>
+             </div>
+           </div>
+          </div>
+        {% endfor %}
+      </div><br><br>
+</div>
+
+</body>
+</html>
